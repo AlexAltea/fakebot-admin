@@ -18,14 +18,20 @@
         </div>
         <a class="item"><i class="icon home"></i>Home</a>
         <a class="item"><i class="icon world"></i>Map</a>
-        <a class="item"><i class="icon spy"></i>Bots</a>
+        <div class="item"><i class="icon spy"></i>Bots
+          <div class="menu">
+            <a class="item">Mirai</a>
+            <a class="item">Bashlite</a>
+          </div>
+        </div>
       </div>
       <div class="fa-content pusher">
+        <h4 class="ui horizontal divider header"><i class="icon map"></i>Status</h4>
         <div class="ui two equal height column grid">
           <!-- Connect to Fakebot -->
           <div class="four wide column">
             <div class="ui segment">
-              <form class="ui form">
+              <form id='fa-widget-connect' class="ui form">
                 <div class="field">
                   <label>Server</label>
                   <input type="text" name="fakebot-server" placeholder="Server">
@@ -34,16 +40,16 @@
                   <label>Token</label>
                   <input type="text" name="fakebot-token" placeholder="Token">
                 </div>
-                <button class="ui button">Connect</button>
+                <button class="ui button" type="submit">Connect</button>
               </form>
             </div>
           </div>
           <!-- Fakebot status -->
           <div class="twelve wide column">
             <div class="fa-widget-status ui segment">
-              <div class="ui grid indeterminate active loader">
+              <div class="ui text loader"></div>
+              <div class="ui grid">
                 <div class="four wide column">
-                  Stuff
                 </div>
               </div>
             </div>

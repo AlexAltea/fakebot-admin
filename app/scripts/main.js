@@ -40,3 +40,20 @@ function drawVisualization() {
     var chart = new google.visualization.GeoChart(document.getElementById('fa-widget-minimap-canvas')); 
     chart.draw(data, options);
 }
+
+var fa = {
+    server_app: new ServerApp()
+};
+
+$(document).ready(function () {
+    uiLoaderWaiting();
+})
+
+// Widgets
+$('#fa-widget-connect').submit(function () {
+    var form = $(this);
+    var server = form.find('input[name=fakebot-server]').val();
+    var token = form.find('input[name=fakebot-token]').val();
+    fa.server_app.connect(server, token);
+    return false;
+});
