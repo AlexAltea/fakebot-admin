@@ -3,7 +3,6 @@ google.setOnLoadCallback(drawVisualization);
 
 function drawVisualization() {
     var data = new google.visualization.DataTable();
-
     data.addColumn('number', 'Lat');
     data.addColumn('number', 'Long');
     data.addColumn('number', 'Value');
@@ -14,7 +13,7 @@ function drawVisualization() {
     var options = {
         projection: 'kavrayskiy-vii',
         legend: 'none', 
-        datalessRegionColor: '#C0C0C0',
+        datalessRegionColor: '#D0D0D0',
         backgroundColor: {
             fill: 'transparent',
             stroke: '#FFF',
@@ -55,5 +54,10 @@ $('#fa-widget-connect').submit(function () {
     var server = form.find('input[name=fakebot-server]').val();
     var token = form.find('input[name=fakebot-token]').val();
     fa.server_app.connect(server, token);
+    return false;
+});
+
+$('#fa-widget-disconnect').submit(function () {
+    fa.server_app.disconnect();
     return false;
 });

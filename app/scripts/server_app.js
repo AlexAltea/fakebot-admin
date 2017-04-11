@@ -3,6 +3,41 @@ function ServerApp() {
     this.server = undefined;
     this.token = undefined;
 
+    // API
+    /**
+     * Get full list of bots
+     */
+    this.get_bots = function () {
+        $.ajax({
+            type: 'GET',
+            url: server + '/bots',
+            crossDomain: true,
+            success: function() {
+                /* Update UI */
+            },
+            error: function() {
+                this.disconnect();
+            }
+        });
+    },
+
+    /**
+     * Get a particular bot given its ID
+     */
+    this.get_bot = function (botid) {
+        $.ajax({
+            type: 'GET',
+            url: server + '/bots/' + botid,
+            crossDomain: true,
+            success: function() {
+                /* Update UI */
+            },
+            error: function() {
+                this.disconnect();
+            }
+        });
+    },
+    // Connection
     /**
      * Connect to a Fakebot server
      */
@@ -20,13 +55,23 @@ function ServerApp() {
             data: {'token': token},
             crossDomain: true,
             success: function() {
-                uiLoaderConnected();
+                uiEventConnected(server);
                 this.server = server;
                 this.token = token;
             },
             error: function() {
-                uiLoaderWaiting();
+                console.log("Could not connect to Fakebot server");
+                this.disconnect();
             }
         });
+    }
+
+    /**
+     * Disconnect from a Fakebot server
+     */
+    this.disconnect = function () {
+        uiEventDisconnected();
+        this.server = undefined;
+        this.token = undefined;
     }
 }

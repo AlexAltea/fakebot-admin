@@ -26,11 +26,11 @@
         </div>
       </div>
       <div class="fa-content pusher">
-        <h4 class="ui horizontal divider header"><i class="icon map"></i>Status</h4>
         <div class="ui two equal height column grid">
-          <!-- Connect to Fakebot -->
+          <!-- Fakebot connection -->
           <div class="four wide column">
             <div class="ui segment">
+              <!-- Connect form -->
               <form id='fa-widget-connect' class="ui form">
                 <div class="field">
                   <label>Server</label>
@@ -41,6 +41,13 @@
                   <input type="text" name="fakebot-token" placeholder="Token">
                 </div>
                 <button class="ui button" type="submit">Connect</button>
+              </form>
+              <!-- Disconnect form -->
+              <form id='fa-widget-disconnect' class="ui form">
+                You are connected to:<br>
+                <code id="fakebot-server"></code>
+                <div style="margin-top: 20px"></div>
+                <button class="ui button" type="submit">Disconnect</button>
               </form>
             </div>
           </div>
@@ -57,6 +64,7 @@
         </div>
         <h4 class="ui horizontal divider header"><i class="icon map"></i>Live Map</h4>
         <div class="fa-widget-minimap ui segment">
+          <div class="ui text loader"></div>
           <div id="fa-widget-minimap-canvas"></div>
         </div>
       </div>
