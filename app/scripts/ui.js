@@ -18,6 +18,10 @@ function uiLoaderConnected() {
 }
 
 // Events
+function uiEventInit() {
+    uiLoaderWaiting();
+    uiEventDisconnected();
+}
 function uiEventConnected(server) {
     uiLoaderConnected();
     $('#fa-widget-connect').hide();

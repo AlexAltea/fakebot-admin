@@ -43,7 +43,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= path.dist %>/fakebot-admin.js': [
-                        '<%= path.app %>/scripts/*.js'
+                        '<%= path.app %>/scripts/{,*/}*.js'
                     ]
                 }
             }
