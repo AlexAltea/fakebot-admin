@@ -26,10 +26,10 @@
         </div>
       </div>
       <div class="fa-content pusher">
-        <div class="ui two equal height column grid">
+        <div class="ui two column equal height grid">
           <!-- Fakebot connection -->
           <div class="four wide column">
-            <div class="ui segment">
+            <div class="ui segment" style="height:100%;">
               <!-- build:include views/fa-widget-connect.html -->
               <!-- /build -->
               <!-- build:include views/fa-widget-disconnect.html -->
@@ -38,17 +38,22 @@
           </div>
           <!-- Fakebot status -->
           <div class="twelve wide column">
-            <div class="ui segment">
-              <div class="ui text loader"></div>
+            <div class="ui blurring segment" style="height:100%;">
               <!-- build:include views/fa-status.html -->
               <!-- /build -->
+              <div class="ui inverted dimmer"></div>
             </div>
+            <div class="ui text loader"></div>
           </div>
         </div>
+
         <h4 class="ui horizontal divider header"><i class="icon map"></i>Live Map</h4>
-        <div class="fa-widget-minimap ui segment">
+        <div>
+          <div class="fa-widget-minimap ui segment">
+            <div id="fa-widget-minimap-canvas"></div>
+            <div class="ui inverted dimmer"></div>
+          </div>
           <div class="ui text loader"></div>
-          <div id="fa-widget-minimap-canvas"></div>
         </div>
       </div>
       <!-- Dependencies -->
