@@ -66,6 +66,10 @@ module.exports = function (grunt) {
             }
         },
         watch: {
+            views: {
+                files: '<%= path.app %>/{,*/}*.html',
+                tasks: ['processhtml', 'htmlmin']
+            },
             scripts: {
                 files: '<%= path.app %>/scripts/{,*/}*.js',
                 tasks: ['uglify']
@@ -76,7 +80,7 @@ module.exports = function (grunt) {
             },
             livereload: {
                 files: [
-                    '*.html',
+                    'index.html',
                     '<%= path.dist %>/*.js',
                     '<%= path.dist %>/*.css'
                 ],

@@ -30,30 +30,15 @@
           <!-- Fakebot connection -->
           <div class="four wide column">
             <div class="ui segment">
-              <!-- Connect form -->
-              <form id='fa-widget-connect' class="ui form">
-                <div class="field">
-                  <label>Server</label>
-                  <input type="text" name="fakebot-server" placeholder="Server">
-                </div>
-                <div class="field">
-                  <label>Token</label>
-                  <input type="text" name="fakebot-token" placeholder="Token">
-                </div>
-                <button class="ui button" type="submit">Connect</button>
-              </form>
-              <!-- Disconnect form -->
-              <form id='fa-widget-disconnect' class="ui form">
-                You are connected to:<br>
-                <code id="fakebot-server"></code>
-                <div style="margin-top: 20px"></div>
-                <button class="ui button" type="submit">Disconnect</button>
-              </form>
+              <!-- build:include views/fa-widget-connect.html -->
+              <!-- /build -->
+              <!-- build:include views/fa-widget-disconnect.html -->
+              <!-- /build -->
             </div>
           </div>
           <!-- Fakebot status -->
           <div class="twelve wide column">
-            <div class="fa-widget-status ui segment">
+            <div class="ui segment">
               <div class="ui text loader"></div>
               <!-- build:include views/fa-status.html -->
               <!-- /build -->
