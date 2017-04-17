@@ -16,6 +16,7 @@
     "grunt-contrib-htmlmin": "^2.3.0",
     "grunt-contrib-uglify": "^2.3.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-processhtml": "^0.4.1",
     "load-grunt-tasks": "^3.5.2",
     "time-grunt": "^1.0.0"
   },

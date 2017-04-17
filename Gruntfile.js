@@ -13,12 +13,10 @@ module.exports = function (grunt) {
             app: 'app',
             dist: 'dist'
         },
-        cssmin: {
-            combine: {
+        processhtml: {
+            index: {
                 files: {
-                    '<%= path.dist %>/fakebot-admin.css': [
-                        '<%= path.app %>/styles/**/*.css'
-                    ]
+                    'index.html': ['<%= path.app %>/index.html']
                 }
             }
         },
@@ -29,11 +27,18 @@ module.exports = function (grunt) {
                     collapseWhitespace: true
                 },
                 files: [{
-                    expand: true,
-                    cwd: '<%= path.dist %>',
-                    src: '{,*/}*.html',
-                    dest: '<%= path.dist %>/'
+                    src: 'index.html',
+                    dest: 'index.html',
                 }]
+            }
+        },
+        cssmin: {
+            combine: {
+                files: {
+                    '<%= path.dist %>/fakebot-admin.css': [
+                        '<%= path.app %>/styles/**/*.css'
+                    ]
+                }
             }
         },
         uglify: {
@@ -84,8 +89,9 @@ module.exports = function (grunt) {
 
     // Project tasks
     grunt.registerTask('build', [
-        'cssmin',
+        'processhtml',
         'htmlmin',
+        'cssmin',
         'uglify',
     ]);
     grunt.registerTask('serve', [

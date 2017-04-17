@@ -1,0 +1,78 @@
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8">
+      <title>Fakebot Admin</title>
+      <!-- Dependencies -->
+      <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+      <!-- Style -->
+      <link rel="stylesheet" type="text/css" href="dist/fakebot-admin.css">
+    </head>
+    <body>
+      <div class="ui vertical inverted left visible sidebar menu">
+        <div class="item">
+          <h1>Fakebot Admin</h1>
+          <p>
+            Admin dashboard for the Fakebot botnet monitoring tool.
+          </p>
+        </div>
+        <a class="item"><i class="icon home"></i>Home</a>
+        <a class="item"><i class="icon world"></i>Map</a>
+        <div class="item"><i class="icon spy"></i>Bots
+          <div class="menu">
+            <a class="item">Mirai</a>
+            <a class="item">Bashlite</a>
+          </div>
+        </div>
+      </div>
+      <div class="fa-content pusher">
+        <div class="ui two equal height column grid">
+          <!-- Fakebot connection -->
+          <div class="four wide column">
+            <div class="ui segment">
+              <!-- Connect form -->
+              <form id='fa-widget-connect' class="ui form">
+                <div class="field">
+                  <label>Server</label>
+                  <input type="text" name="fakebot-server" placeholder="Server">
+                </div>
+                <div class="field">
+                  <label>Token</label>
+                  <input type="text" name="fakebot-token" placeholder="Token">
+                </div>
+                <button class="ui button" type="submit">Connect</button>
+              </form>
+              <!-- Disconnect form -->
+              <form id='fa-widget-disconnect' class="ui form">
+                You are connected to:<br>
+                <code id="fakebot-server"></code>
+                <div style="margin-top: 20px"></div>
+                <button class="ui button" type="submit">Disconnect</button>
+              </form>
+            </div>
+          </div>
+          <!-- Fakebot status -->
+          <div class="twelve wide column">
+            <div class="fa-widget-status ui segment">
+              <div class="ui text loader"></div>
+              <!-- build:include views/fa-status.html -->
+              <!-- /build -->
+            </div>
+          </div>
+        </div>
+        <h4 class="ui horizontal divider header"><i class="icon map"></i>Live Map</h4>
+        <div class="fa-widget-minimap ui segment">
+          <div class="ui text loader"></div>
+          <div id="fa-widget-minimap-canvas"></div>
+        </div>
+      </div>
+      <!-- Dependencies -->
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+      <script src="dist/fakebot-admin.js"></script>
+    </body>
+  </html>
