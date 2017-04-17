@@ -3,40 +3,61 @@ function ServerApp() {
     this.server = undefined;
     this.token = undefined;
 
-    // API
-    /**
-     * Get full list of bots
-     */
-    this.get_bots = function () {
+    // Send request
+    this.request = function (type, path, config) {
+        // Default configuration
+        if (typeof config.data === 'undefined') {
+            config.data = {};
+        }
+        if (typeof config.data.token == 'undefined') {
+            config.data.token = this.token;
+        }
+        if (typeof config.error === 'undefined') {
+            config.error = function() {
+                instance.disconnect();
+            }
+        }
+        // Send request
         $.ajax({
-            type: 'GET',
-            url: server + '/bots',
+            type: type,
+            url: this.server + path,
             crossDomain: true,
-            success: function() {
+            data: config.data,
+            success: config.success,
+            error: config.error,
+        });
+    }
+
+    // API
+    this.get_status = function () {
+        var instance = this;
+        this.request('GET', '/status', {
+            success: function(data) {
+                widgetStatusUpdate(data);
+            }
+        });
+    }
+
+    // Get full list of bots
+    this.get_bots = function () {
+        var instance = this;
+        this.request('GET', '/bots', {
+            success: function(data) {
                 /* Update UI */
-            },
-            error: function() {
-                this.disconnect();
             }
         });
     },
 
-    /**
-     * Get a particular bot given its ID
-     */
+    // Get a particular bot given its ID
     this.get_bot = function (botid) {
-        $.ajax({
-            type: 'GET',
-            url: server + '/bots/' + botid,
-            crossDomain: true,
-            success: function() {
+        var instance = this;
+        this.request('GET', '/bots/' + botid, {
+            success: function(data) {
                 /* Update UI */
-            },
-            error: function() {
-                this.disconnect();
             }
         });
     },
+
     // Connection
     /**
      * Connect to a Fakebot server
@@ -49,19 +70,17 @@ function ServerApp() {
             server = 'http://' + server;
         }
         // Login
-        $.ajax({
-            type: 'GET',
-            url: server + '/login',
-            data: {'token': token},
-            crossDomain: true,
-            success: function() {
+        var instance = this;
+        instance.server = server;
+        instance.token = token;
+        this.request('GET', '/login', {
+            success: function(data) {
                 uiEventConnected(server);
-                this.server = server;
-                this.token = token;
+                instance.get_status();
             },
             error: function() {
                 console.log("Could not connect to Fakebot server");
-                this.disconnect();
+                instance.disconnect();
             }
         });
     }
