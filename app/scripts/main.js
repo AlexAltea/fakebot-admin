@@ -1,13 +1,38 @@
-google.charts.load('current', {packages: ['corechart']});
-google.charts.setOnLoadCallback(widgetMinimapDraw);
-
+// Globals
 var fa = {
-    server_app: new ServerApp()
+    // Widgets
+    widget_minimap: new WidgetMinimap(),
+    // Server
+    server_app: new ServerApp(),
 };
+
+// Initialization
+google.charts.load('current', {packages: ['corechart']});
+google.charts.setOnLoadCallback(eventChartsReady);
 
 $(document).ready(function () {
     uiEventInit();
+    fa.server_app.connect("localhost:5000", "1234");
 })
+
+// Events
+$(window).resize(function() {
+    if (this.resizeTO) {
+        clearTimeout(this.resizeTO);
+    }
+    this.resizeTO = setTimeout(function() {
+        $(this).trigger('resizeEnd');
+    }, 100);
+});
+
+$(window).on('resizeEnd', function() {
+    fa.widget_minimap.draw();
+});
+
+function eventChartsReady() {
+    fa.widget_minimap.init();
+    fa.widget_minimap.draw();
+}
 
 // Widgets
 $('#fa-widget-connect').submit(function () {

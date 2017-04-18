@@ -6,6 +6,11 @@ body {
   margin-right: 270px;
 }
 
+/******** Widgets ********/
 .fa-widget-status {
   min-height: 100%;
+}
+
+.google-visualization-tooltip {
+  width: 200px;
 }

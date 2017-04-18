@@ -43,7 +43,7 @@ function ServerApp() {
         var instance = this;
         this.request('GET', '/bots', {
             success: function(data) {
-                /* Update UI */
+                fa.widget_minimap.draw(data);
             }
         });
     },
@@ -77,6 +77,7 @@ function ServerApp() {
             success: function(data) {
                 uiEventConnected(server);
                 instance.get_status();
+                instance.get_bots();
             },
             error: function() {
                 console.log("Could not connect to Fakebot server");
