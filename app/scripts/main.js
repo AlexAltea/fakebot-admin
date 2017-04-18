@@ -12,7 +12,6 @@ google.charts.setOnLoadCallback(eventChartsReady);
 
 $(document).ready(function () {
     uiEventInit();
-    fa.server_app.connect("localhost:5000", "1234");
 })
 
 // Events

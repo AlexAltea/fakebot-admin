@@ -67,7 +67,7 @@ function ServerApp() {
         // Preprocessing
         if (!server.startsWith('http://') &&
             !server.startsWith('https://')) {
-            server = 'http://' + server;
+            server = 'https://' + server;
         }
         // Login
         var instance = this;
