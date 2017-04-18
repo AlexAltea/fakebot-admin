@@ -1,5 +1,2 @@
 # Dependencies NodeJS
 node_modules/
-
-# Build
-dist/
